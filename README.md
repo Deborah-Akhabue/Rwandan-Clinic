@@ -1,5 +1,5 @@
-# Rawadian-Health-Clinic
-SQL scripts for data cleaning Rawadian Health Clinic datasets
+# Rwandan-Clinic
+SQL scripts for data cleaning Rwandan-Clinic datasets
 
 # SQL Data Cleaning and Exploration
 
