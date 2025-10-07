@@ -73,3 +73,29 @@ SET cost = CASE
                      WHEN cost = 'missing' THEN 'NULL'
                      ELSE cost
                   END;
+
+
+UPDATE patient_records_fact
+SET cost = NULL
+WHERE cost = 'NULL';
+
+ALTER TABLE patient_records_fact
+ALTER COLUMN cost DECIMAL(12,2);
+
+SELECT COLUMN_NAME, DATA_TYPE
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'patient_records_fact';
+
+
+SELECT 
+    FORMAT(visit_date, 'yyyy-MM-dd HH:mm:ss') AS visit_date
+FROM patient_records_fact;
+
+SELECT visit_date
+FROM dbo.patient_records_fact
+WHERE YEAR(visit_date) > YEAR(GETDATE());
+
+UPDATE dbo.patient_records_fact
+SET visit_date = DATEADD(YEAR, -30, visit_date)
+WHERE YEAR(visit_date) IN (2046, 2047, 2048, 2049);
+
